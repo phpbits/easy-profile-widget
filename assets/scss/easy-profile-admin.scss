@@ -1,0 +1,47 @@
+@import "compass";
+
+body{
+	.easy-profile-tabs{
+	  .ui-tabs-nav{
+	    padding: 0px;
+	    margin: 0px;
+	    li{
+	      float: left;
+	      margin: 0px;
+	      a{
+	        display: block;
+	        padding: 5px 7px;
+	        border: 1px solid #ccc;
+	        border-bottom: none;
+	        background: #e4e4e4;
+	        color: #555;
+	        text-decoration: none;
+	        margin: -4px 4px -1px 0;
+	        &, &:focus{
+	          outline: 0;
+	        }
+	      }
+	      &.ui-state-active{
+	        a{
+	          background: #fff;
+	          @include box-shadow(none);
+	        }
+	      }
+	    }
+	    &:after{
+	      content: "";
+	      display: table;
+	      border-collapse: collapse;
+	      clear: both;
+	    }
+	  }
+	  .ui-widget-content{
+	    clear: both;
+	    border: 1px solid #ccc;
+	    padding: 10px;
+	    margin-bottom: 12px;
+	    // border-top: none;
+	    @include box-sizing(border-box);
+	  }
+	}
+}
