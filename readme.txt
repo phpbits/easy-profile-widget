@@ -22,6 +22,10 @@ After plugin activation 'Easy Profile' widget will be available under <strong>Ap
 <h3>SiteOrigin Page Builder Compatible</h3>
 Widgetized plugins cannot be completed without SiteOrigin compatibility! If you are using SiteOrigin Page Builder and you want to easily add About Me or Profile Section on your content, Easy Profile Widget is what you're looking for! Go ahead and try it :)
 
+= Translators =
+
+* French (fr_FR) - <a href="https://profiles.wordpress.org/jptwf">JP - TWF</a>
+
 == Installation ==
 
 1. Upload the full directory into your wp-content/plugins directory
@@ -29,7 +33,8 @@ Widgetized plugins cannot be completed without SiteOrigin compatibility! If you 
 3. That's it :)
 
 == Frequently Asked Questions ==
---
+= How to Add Easy Profile Widget =
+* Go to Appearance > Widget then drag and drop <strong>Easy Profile</strong> to any widget sidebar.
 
 == Screenshots ==
 1. Center Aligned Profile Widget
@@ -38,6 +43,10 @@ Widgetized plugins cannot be completed without SiteOrigin compatibility! If you 
 4. Description Widget Options
 
 == Changelog ==
+
+= 1.1 =
+* French (fr_FR) translation - <a href="https://profiles.wordpress.org/jptwf">JP - TWF</a>
+* Additional hooks & filters variable
 
 = 1.0 =
 * Initial Plugin release

@@ -4,7 +4,7 @@
 Plugin Name: Easy Profile Widget
 Plugin URI: https://wordpress.org/plugins/easy-profile-widget
 Description: Display User Profile Block with Gravatar on your sidebar widget
-Version: 1.0
+Version: 1.1
 Author: phpbits
 Author URI: http://codecanyon.net/user/phpbits/portfolio?ref=phpbits
 */
@@ -15,6 +15,9 @@ if ( !function_exists( 'add_action' ) ) {
     header( 'HTTP/1.1 403 Forbidden' );
     exit();
 }
+
+// Load translation (by JP)
+load_plugin_textdomain( 'easy-profile', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
 
 /*##################################
 	REQUIRE

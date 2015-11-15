@@ -15,7 +15,7 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 				__( 'Easy Profile', 'easy-profile' ),
 				array( 'description' => __( 'Display User Profile Block with Gravatar on your sidebar widget', 'easy-profile' ) 
 				),
-				array( 'width' => 380  )
+				array( 'width' => apply_filters( 'easy_profile_widget_width', 380 )  )
 			);
 		}
 
@@ -28,11 +28,14 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 		public function widget( $args, $instance ) {
 			extract( $args );
 
-			$small 			= apply_filters( 'easy_profile_widget_avatar_small', 50 );
-			$medium 		= apply_filters( 'easy_profile_widget_avatar_medium', 70 );
-			$large 			= apply_filters( 'easy_profile_widget_avatar_large', 90 );
-			$extra_large 	= apply_filters( 'easy_profile_widget_avatar_extra_large', 120 );
-			$description 	= '';
+			$instance['uniqid'] = time() .'-'. uniqid(true);
+			$small 				= apply_filters( 'easy_profile_widget_avatar_small', 50 );
+			$medium 			= apply_filters( 'easy_profile_widget_avatar_medium', 70 );
+			$large 				= apply_filters( 'easy_profile_widget_avatar_large', 90 );
+			$extra_large 		= apply_filters( 'easy_profile_widget_avatar_extra_large', 120 );
+			$classes 			= apply_filters( 'easy_profile_widget_extra_classes', array(), $instance );
+			$description 		= '';
+			$instance['sizes'] 	= array( 'small' => $small, 'medium' => $medium, 'large' => $large, 'extra_large' => $extra_large );
 			ob_start();
 			if( isset( $instance['title'] ) ){
 				$title = apply_filters( 'widget_title', $instance['title'] );
@@ -43,34 +46,36 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 			if ( $title ) {
 			  echo $before_title . $title . $after_title;
 			} ?>
-			<div class="easy-profile-widget-wrapper easy-profile-widget-avatar-<?php echo ( isset( $instance['alignment'] ) ) ? $instance['alignment'] : ''; ?> easy-profile-widget-avatar-<?php echo ( isset( $instance['shape'] ) ) ? $instance['shape'] : ''; ?>">
+			<div class="easy-profile-widget-wrapper easy-profile-widget-avatar-<?php echo ( isset( $instance['alignment'] ) ) ? $instance['alignment'] : ''; ?> easy-profile-widget-avatar-<?php echo ( isset( $instance['shape'] ) ) ? $instance['shape'] : ''; ?> <?php echo ( !empty($classes) ) ? implode( ' ' , $classes) : '';?>">
 				<?php 
 					do_action( 'before_easy_profile_widget', $instance );
-					do_action( 'before_easy_profile_widget_avatar', $instance );
-					if( isset( $instance['user'] ) && !empty( $instance['user'] ) ){
-						$userdata =	get_userdata( $instance['user'] );
-						$gravatar =	get_avatar( $instance['user'], $$instance['size'] );
-						echo apply_filters( 'easy_profile_widget_avatar', $gravatar, $instance );
-						echo apply_filters( 'easy_profile_widget_name', '<h4>'. $userdata->display_name .'</h4>', $instance );
-					}
-					do_action( 'after_easy_profile_widget_avatar', $instance );
-					do_action( 'before_easy_profile_widget_description', $instance );
-					echo '<p>';
-					if( isset( $instance['description'] ) && $instance['description'] == 'custom' ){
-						$description = $instance['custom_description'] ;
-					}else{
+					echo '<div class="easy-profile-widget-inner">';
+						do_action( 'before_easy_profile_widget_avatar', $instance );
 						if( isset( $instance['user'] ) && !empty( $instance['user'] ) ){
-							$description = $userdata->description;
+							$userdata =	get_userdata( $instance['user'] );
+							$gravatar =	get_avatar( $instance['user'], $$instance['size'] );
+							echo apply_filters( 'easy_profile_widget_avatar', $gravatar, $instance );
+							echo apply_filters( 'easy_profile_widget_name', '<h4>'. $userdata->display_name .'</h4>', $instance );
 						}
-					}
+						do_action( 'after_easy_profile_widget_avatar', $instance );
+						do_action( 'before_easy_profile_widget_description', $instance );
+						echo '<p>';
+						if( isset( $instance['description'] ) && $instance['description'] == 'custom' ){
+							$description = $instance['custom_description'] ;
+						}else{
+							if( isset( $instance['user'] ) && !empty( $instance['user'] ) ){
+								$description = $userdata->description;
+							}
+						}
 
-					echo apply_filters( 'easy_profile_widget_description', $description, $instance );
+						echo apply_filters( 'easy_profile_widget_description', $description, $instance );
 
-					if( isset( $instance['extended_page'] ) && !empty( $instance['extended_page'] ) ){
-						echo ' <a href="'. esc_url( get_permalink( $instance['extended_page'] ) ) .'">'. $instance['extended_text'] .'</a>';
-					}
-					echo '</p>';
-					do_action( 'after_easy_profile_widget_description', $instance );
+						if( isset( $instance['extended_page'] ) && !empty( $instance['extended_page'] ) ){
+							echo ' <a href="'. esc_url( get_permalink( $instance['extended_page'] ) ) .'">'. $instance['extended_text'] .'</a>';
+						}
+						echo '</p>';
+						do_action( 'after_easy_profile_widget_description', $instance );
+					echo '</div>';
 					do_action( 'after_easy_profile_widget', $instance );?>
 			</div>
 			<?php
@@ -136,7 +141,7 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 								<!-- <option value='square' <?php if ( isset ( $instance['shape'] ) && $instance['shape'] == 'square' ) { echo $selected; } ?> ><?php _e( 'Square', 'easy-profile' );?></option> -->
 							</select>
 						</p>
-						<?php do_action( 'after_easy_profile_widget_avatar_tab', $instance );?>
+						<?php do_action( 'after_easy_profile_widget_avatar_tab', array( 'id' => $uniqid, 'instance' => $instance, 'this' => ( isset( $this ) ) ? $this : array() ) );?>
 					</div> <!-- end tab 1 -->
 					<div id="easy-profile-tab-<?php echo $uniqid;?>-2">
 						<?php do_action( 'before_easy_profile_widget_description_tab', $instance );?>
@@ -160,9 +165,9 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 						<p><label for="<?php echo $this->get_field_id( 'extended_text' ); ?>"><?php _e( 'Extended page link text:', 'easy-profile' ) ?></label>
 						<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'extended_text' ); ?>" name="<?php echo $this->get_field_name( 'extended_text' ); ?>" value="<?php if ( isset ( $instance['extended_text'] ) ) { echo esc_attr( $instance['extended_text'] ); }else{ _e( 'Read More…', 'easy-profile' ); } ?>" />
 						</p>
-						<?php do_action( 'after_easy_profile_widget_description_tab', $instance );?>
+						<?php do_action( 'after_easy_profile_widget_description_tab', array( 'id' => $uniqid, 'instance' => $instance, 'this' => ( isset( $this ) ) ? $this : array() ) );?>
 					</div> <!-- end tab 2 -->
-					<?php do_action( 'do_easy_profile_widget_tabcontent', array( 'id' => $uniqid, 'instance' => $instance ) );?>
+					<?php do_action( 'do_easy_profile_widget_tabcontent', array( 'id' => $uniqid, 'instance' => $instance, 'this' => ( isset( $this ) ) ? $this : array() ) );?>
 				</div>	
 			</div>
 			<script type="text/javascript">
@@ -185,15 +190,15 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 		public function update( $new_instance, $old_instance ) {
 			$instance = $old_instance;
 			// Fields
-			$instance['title'] 				= strip_tags($new_instance['title']);
-			$instance['user'] 				= strip_tags($new_instance['user']);
-			$instance['size'] 				= strip_tags($new_instance['size']);
-			$instance['alignment'] 			= strip_tags($new_instance['alignment']);
-			$instance['shape'] 				= strip_tags($new_instance['shape']);
-			$instance['description']		= strip_tags($new_instance['description']);
-			$instance['custom_description']	= strip_tags($new_instance['custom_description']);
-			$instance['extended_page']		= strip_tags($new_instance['extended_page']);
-			$instance['extended_text']		= strip_tags($new_instance['extended_text']);
+			$instance['title'] 				= ( isset( $new_instance['title'] ) ) ? strip_tags($new_instance['title']) : '';
+			$instance['user'] 				= ( isset( $new_instance['user'] ) ) ? strip_tags($new_instance['user']) : '';
+			$instance['size'] 				= ( isset( $new_instance['size'] ) ) ? strip_tags($new_instance['size']) : '';
+			$instance['alignment'] 			= ( isset( $new_instance['alignment'] ) ) ? strip_tags($new_instance['alignment']) : '';
+			$instance['shape'] 				= ( isset( $new_instance['shape'] ) ) ? strip_tags($new_instance['shape']) : '';
+			$instance['description']		= ( isset( $new_instance['description'] ) ) ? strip_tags($new_instance['description']) : '';
+			$instance['custom_description']	= ( isset( $new_instance['custom_description'] ) ) ? strip_tags($new_instance['custom_description']) : '';
+			$instance['extended_page']		= ( isset( $new_instance['extended_page'] ) ) ? strip_tags($new_instance['extended_page']) : '';
+			$instance['extended_text']		= ( isset( $new_instance['extended_text'] ) ) ? strip_tags($new_instance['extended_text']) : '';
 
 			$instance = apply_filters( 'save_easy_profile_widget_instance', $instance, $new_instance );
 
