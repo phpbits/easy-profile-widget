@@ -22,6 +22,20 @@ After plugin activation 'Easy Profile' widget will be available under <strong>Ap
 <h3>SiteOrigin Page Builder Compatible</h3>
 Widgetized plugins cannot be completed without SiteOrigin compatibility! If you are using SiteOrigin Page Builder and you want to easily add About Me or Profile Section on your content, Easy Profile Widget is what you're looking for! Go ahead and try it :)
 
+<h3>Premium Add-on available</h3>
+
+= Easy Profile Widget Cards Add-on =
+a feature-rich plugin to maximize your About & Profile section's capabilities. With this plugin you will have to full control of the widget’s unlimited possibilities.
+
+* Card Layouts
+* Layout Alignment
+* Color Scheme & Styling
+* Custom avatar and cover image
+* Tagline
+* Social Icons
+
+<a href="http://codecanyon.net/item/easy-profile-widget-cards-addon/13678283?ref=phpbits" target="_blank">Click here for more info and demo.</a>
+
 = Translators =
 
 * French (fr_FR) - <a href="https://profiles.wordpress.org/jptwf">JP - TWF</a>
