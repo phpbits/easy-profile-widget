@@ -44,4 +44,13 @@ body{
 	    @include box-sizing(border-box);
 	  }
 	}
+	.easy-profile-widget-form{
+		.ui-widget-content, .ui-widget-header, .ui-widget-header li{
+			border: 0px !important;
+			background: transparent !important;
+		}
+		.ui-widget-content.ui-tabs-panel{
+			border: 1px solid #ccc !important;
+		}
+	}
 }

@@ -24,3 +24,4 @@ load_plugin_textdomain( 'easy-profile', false, plugin_basename( dirname( __FILE_
 ################################## */
 require_once( dirname( __FILE__ ) . '/core/functions.enqueue.php');
 require_once( dirname( __FILE__ ) . '/core/functions.widget.php');
+require_once( dirname( __FILE__ ) . '/core/functions.notices.php');
