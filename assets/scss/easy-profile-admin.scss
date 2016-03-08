@@ -2,6 +2,9 @@
 
 body{
 	.easy-profile-tabs{
+		font-family: "Open Sans",sans-serif;
+		font-size: 13px;
+    	line-height: 1.5;
 	  .ui-tabs-nav{
 	    padding: 0px;
 	    margin: 0px;
@@ -51,6 +54,18 @@ body{
 		}
 		.ui-widget-content.ui-tabs-panel{
 			border: 1px solid #ccc !important;
+		}
+		.ui-tabs .ui-tabs-nav .ui-tabs-anchor{
+			font-weight: normal;
+			font-size: 14px;
+			padding: 5px 8px;
+		}
+		.easy-profile-learnmore{
+			color: #0073aa;
+			text-decoration: none;
+			&:hover{
+				text-decoration: underline;
+			}
 		}
 	}
 }

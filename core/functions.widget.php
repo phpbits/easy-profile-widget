@@ -15,7 +15,7 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 				__( 'Easy Profile', 'easy-profile' ),
 				array( 'description' => __( 'Display User Profile Block with Gravatar on your sidebar widget', 'easy-profile' ) 
 				),
-				array( 'width' => apply_filters( 'easy_profile_widget_width', 380 )  )
+				array( 'width' => apply_filters( 'easy_profile_widget_width', 500 )  )
 			);
 		}
 
@@ -103,6 +103,9 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 					<ul>
 						<li><a href="#easy-profile-tab-<?php echo $uniqid;?>-1"><?php _e( 'Gravatar', 'easy-profile' );?></a></li>
 						<li><a href="#easy-profile-tab-<?php echo $uniqid;?>-2"><?php _e( 'Description', 'easy-profile' );?></a></li>
+						<?php if( !function_exists( 'easy_profile_widget_cards_cover' ) ){?>
+							<li><a href="#easy-profile-tab-<?php echo $uniqid;?>-addon"><?php _e( '+', 'easy-profile' );?></a></li>
+						<?php }?>
 						<?php do_action( 'do_easy_profile_widget_tab', array( 'id' => $uniqid, 'instance' => $instance ) );?>
 					</ul>
 					<div id="easy-profile-tab-<?php echo $uniqid;?>-1">
@@ -167,6 +170,21 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 						</p>
 						<?php do_action( 'after_easy_profile_widget_description_tab', array( 'id' => $uniqid, 'instance' => $instance, 'this' => ( isset( $this ) ) ? $this : array() ) );?>
 					</div> <!-- end tab 2 -->
+
+					<?php if( !function_exists( 'easy_profile_widget_cards_cover' ) ){?>
+						<div id="easy-profile-tab-<?php echo $uniqid;?>-addon">
+							<p><strong><?php _e( 'Maximize your About & Profile Widget', 'easy-profile' );?></strong></p>
+							<ul>
+								<li><span class="dashicons dashicons-yes"></span> <?php _e( 'Layout & Styling', 'easy-profile' );?></li>
+								<li><span class="dashicons dashicons-yes"></span> <?php _e( 'Custom Avatar & Cover Image', 'easy-profile' );?></li>
+								<li><span class="dashicons dashicons-yes"></span> <?php _e( 'Tagline Text', 'easy-profile' );?></li>
+								<li><span class="dashicons dashicons-yes"></span> <?php _e( 'Alignment', 'easy-profile' );?></li>
+								<li><span class="dashicons dashicons-yes"></span> <?php _e( 'Social Media Icons', 'easy-profile' );?></li>
+							</ul>
+							<p><strong><a href="https://phpbits.net/plugin/easy-profile-cards/" class="easy-profile-learnmore" target="_blank"><?php _e( 'Learn More', 'easy-profile' );?></a></strong></p>
+						</div>
+					<?php }?>
+
 					<?php do_action( 'do_easy_profile_widget_tabcontent', array( 'id' => $uniqid, 'instance' => $instance, 'this' => ( isset( $this ) ) ? $this : array() ) );?>
 				</div>	
 			</div>
