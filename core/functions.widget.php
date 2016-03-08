@@ -181,6 +181,7 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 								<li><span class="dashicons dashicons-yes"></span> <?php _e( 'Alignment', 'easy-profile' );?></li>
 								<li><span class="dashicons dashicons-yes"></span> <?php _e( 'Social Media Icons', 'easy-profile' );?></li>
 							</ul>
+							<p><em><?php _e( 'Use EASYPROFILE2016 and get 20% OFF your purchase. Thanks!', 'easy-profile' );?></em></p>
 							<p><strong><a href="https://phpbits.net/plugin/easy-profile-cards/" class="easy-profile-learnmore" target="_blank"><?php _e( 'Learn More', 'easy-profile' );?></a></strong></p>
 						</div>
 					<?php }?>
