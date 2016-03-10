@@ -34,7 +34,7 @@ a feature-rich plugin to maximize your About & Profile section's capabilities. W
 * Tagline
 * Social Icons
 
-<a href="http://codecanyon.net/item/easy-profile-widget-cards-addon/13678283?ref=phpbits" target="_blank">Click here for more info and demo.</a>
+<a href="https://phpbits.net/plugin/easy-profile-cards/" target="_blank">Click here for more info and demo.</a>
 
 = Translators =
 
@@ -57,6 +57,10 @@ a feature-rich plugin to maximize your About & Profile section's capabilities. W
 4. Description Widget Options
 
 == Changelog ==
+
+= 1.2 =
+* Bug fixes and Admin Notice
+* Add Cards Add-on tab for coupon code
 
 = 1.1 =
 * French (fr_FR) translation - <a href="https://profiles.wordpress.org/jptwf">JP - TWF</a>
