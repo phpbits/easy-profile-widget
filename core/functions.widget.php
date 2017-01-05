@@ -190,7 +190,7 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 				</div>
 				<?php if( !class_exists('PHPBITS_extendedWidgetsDisplay') ):?>
 					<div class="easy-profile-widget--after">
-						<a href="http://widget-options.com?utm_source=easy-menu-widget" target="_blank" ><?php _e( '<strong>Manage your widgets</strong> visibility, styling, alignment, columns, restrictions and more. Click here to learn more. ', 'easy-sidebar-menu-widget' );?></a>
+						<a href="http://widget-options.com?utm_source=easy-profile-widget" target="_blank" ><?php _e( '<strong>Manage your widgets</strong> visibility, styling, alignment, columns, restrictions and more. Click here to learn more. ', 'easy-sidebar-menu-widget' );?></a>
 					</div>
 				<?php endif;?>
 			</div>
