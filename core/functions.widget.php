@@ -11,9 +11,9 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 		 */
 		public function __construct() {
 			parent::__construct(
-				'easy_profile_widget', 
+				'easy_profile_widget',
 				__( 'Easy Profile', 'easy-profile' ),
-				array( 'description' => __( 'Display User Profile Block with Gravatar on your sidebar widget', 'easy-profile' ) 
+				array( 'description' => __( 'Display User Profile Block with Gravatar on your sidebar widget', 'easy-profile' )
 				),
 				array( 'width' => apply_filters( 'easy_profile_widget_width', 500 )  )
 			);
@@ -47,7 +47,7 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 			  echo $before_title . $title . $after_title;
 			} ?>
 			<div class="easy-profile-widget-wrapper easy-profile-widget-avatar-<?php echo ( isset( $instance['alignment'] ) ) ? $instance['alignment'] : ''; ?> easy-profile-widget-avatar-<?php echo ( isset( $instance['shape'] ) ) ? $instance['shape'] : ''; ?> <?php echo ( !empty($classes) ) ? implode( ' ' , $classes) : '';?>">
-				<?php 
+				<?php
 					do_action( 'before_easy_profile_widget', $instance );
 					echo '<div class="easy-profile-widget-inner">';
 						do_action( 'before_easy_profile_widget_avatar', $instance );
@@ -83,7 +83,7 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 			$html = ob_get_clean();
 
 			echo apply_filters( 'do_easy_profile_widget', $html, $args, $instance );
-		}	
+		}
 
 		/**
 		 * Ouputs the options form on admin
@@ -111,14 +111,14 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 					<div id="easy-profile-tab-<?php echo $uniqid;?>-1">
 						<?php do_action( 'before_easy_profile_widget_avatar_tab', $instance );?>
 						<p><label for="<?php echo $this->get_field_id( 'user' ); ?>"><?php _e( 'Select a user. The email address for this account will be used to pull the Gravatar image.', 'easy-profile' ) ?></label>
-							<?php 
-							wp_dropdown_users( 
-								array( 
-										'name' 		=> $this->get_field_name( 'user' ), 
-										'id' 		=> $this->get_field_id( 'user' ), 
+							<?php
+							wp_dropdown_users(
+								array(
+										'name' 		=> $this->get_field_name( 'user' ),
+										'id' 		=> $this->get_field_id( 'user' ),
 										'class' 	=> 'widefat',
-										'selected' 	=> ( isset ( $instance['user'] ) ) ? esc_attr( $instance['user'] ) : '' 
-								) 
+										'selected' 	=> ( isset ( $instance['user'] ) ) ? esc_attr( $instance['user'] ) : ''
+								)
 							); ?>
 						</p>
 						<p><label for="<?php echo $this->get_field_id( 'size' ); ?>"><?php _e( 'Gravatar Size:', 'easy-profile' ); ?></label>
@@ -154,15 +154,15 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 						<textarea id="<?php echo $this->get_field_id( 'custom_description' ); ?>" name="<?php echo $this->get_field_name( 'custom_description' ); ?>" class="widefat" rows="6" cols="5" ><?php if ( isset ( $instance['custom_description'] ) ) { echo esc_attr( $instance['custom_description'] ); } ?></textarea>
 						</p>
 						<p><label for="<?php echo $this->get_field_id( 'extended_page' ); ?>"><?php _e( 'Choose your extended "About Me" page. This will be the page linked to at the end of your author description.', 'easy-profile' ); ?></label>
-							<?php 
-							wp_dropdown_pages( 
-								array( 
-									'name' 				=> $this->get_field_name( 'extended_page' ), 
-									'id' 				=> $this->get_field_id( 'extended_page' ), 
-									'class' 			=> 'widefat', 
-									'show_option_none' 	=> __( 'None', 'easy-profile'), 
+							<?php
+							wp_dropdown_pages(
+								array(
+									'name' 				=> $this->get_field_name( 'extended_page' ),
+									'id' 				=> $this->get_field_id( 'extended_page' ),
+									'class' 			=> 'widefat',
+									'show_option_none' 	=> __( 'None', 'easy-profile'),
 									'selected' 			=> ( isset ( $instance['extended_page'] ) ) ? esc_attr( $instance['extended_page'] ) : ''
-								) 
+								)
 							); ?>
 						</p>
 						<p><label for="<?php echo $this->get_field_id( 'extended_text' ); ?>"><?php _e( 'Extended page link text:', 'easy-profile' ) ?></label>
@@ -187,7 +187,12 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 					<?php }?>
 
 					<?php do_action( 'do_easy_profile_widget_tabcontent', array( 'id' => $uniqid, 'instance' => $instance, 'this' => ( isset( $this ) ) ? $this : array() ) );?>
-				</div>	
+				</div>
+				<?php if( !class_exists('PHPBITS_extendedWidgetsDisplay') ):?>
+					<div class="easy-profile-widget--after">
+						<a href="http://widget-options.com?utm_source=easy-menu-widget" target="_blank" ><?php _e( '<strong>Manage your widgets</strong> visibility, styling, alignment, columns, restrictions and more. Click here to learn more. ', 'easy-sidebar-menu-widget' );?></a>
+					</div>
+				<?php endif;?>
 			</div>
 			<script type="text/javascript">
 			jQuery(document).ready(function($){
@@ -211,11 +216,11 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 			// Fields
 			$instance['title'] 				= ( isset( $new_instance['title'] ) ) ? strip_tags($new_instance['title']) : '';
 			$instance['user'] 				= ( isset( $new_instance['user'] ) ) ? strip_tags($new_instance['user']) : '';
-			$instance['size'] 				= ( isset( $new_instance['size'] ) ) ? strip_tags($new_instance['size']) : '';
+			$instance['size'] 				= ( isset( $new_instance['size'] ) ) ? strip_tags( $new_instance['size'] ) : '';
 			$instance['alignment'] 			= ( isset( $new_instance['alignment'] ) ) ? strip_tags($new_instance['alignment']) : '';
 			$instance['shape'] 				= ( isset( $new_instance['shape'] ) ) ? strip_tags($new_instance['shape']) : '';
-			$instance['description']		= ( isset( $new_instance['description'] ) ) ? strip_tags($new_instance['description']) : '';
-			$instance['custom_description']	= ( isset( $new_instance['custom_description'] ) ) ? strip_tags($new_instance['custom_description']) : '';
+			$instance['description']		= ( isset( $new_instance['description'] ) ) ? strip_tags( $new_instance['description'] ) : '';
+			$instance['custom_description']	= ( isset( $new_instance['custom_description'] ) ) ? strip_tags( $new_instance['custom_description'], apply_filters( 'easy_profile_widget_info_html', '<a><p><strong><em>' ) ) : '';
 			$instance['extended_page']		= ( isset( $new_instance['extended_page'] ) ) ? strip_tags($new_instance['extended_page']) : '';
 			$instance['extended_text']		= ( isset( $new_instance['extended_text'] ) ) ? strip_tags($new_instance['extended_text']) : '';
 
