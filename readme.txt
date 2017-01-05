@@ -3,7 +3,7 @@ Contributors: phpbits
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FMKC2SLPTULP8
 Tags:  profile widget, widgets, widget, about me, about me widget, about widget, about widgets, gravatar, avatar, profile, aboutme, so, site origin, siteorigin
 Requires at least: 4.0
-Tested up to: 4.4
+Tested up to: 4.7
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -57,6 +57,10 @@ a feature-rich plugin to maximize your About & Profile section's capabilities. W
 4. Description Widget Options
 
 == Changelog ==
+
+= 1.3 =
+* Added: easy_profile_widget_info_html filter to allow basic html tags on custom description
+* Fixes: Image left alignment and name
 
 = 1.2 =
 * Bug fixes and Admin Notice
