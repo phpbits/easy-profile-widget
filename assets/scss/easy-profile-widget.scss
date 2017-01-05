@@ -2,6 +2,7 @@
 
 .easy-profile-widget-avatar-left{
 	.avatar{
+		float: left;
 		margin: 0 1em 0 0;
 	}
 }
@@ -18,6 +19,10 @@
 		float: none;
 		margin: 0 auto 0.5em;
 	}
+}
+h4.easy-profile-widget-name{
+	clear: none;
+	@include inline-block;
 }
 .easy-profile-widget-avatar-rounded{
 	.avatar{

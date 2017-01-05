@@ -55,7 +55,7 @@ if( ! class_exists( 'Easy_Profile_Widget' ) ){
 							$userdata =	get_userdata( $instance['user'] );
 							$gravatar =	get_avatar( $instance['user'], $$instance['size'] );
 							echo apply_filters( 'easy_profile_widget_avatar', $gravatar, $instance );
-							echo apply_filters( 'easy_profile_widget_name', '<h4>'. $userdata->display_name .'</h4>', $instance );
+							echo apply_filters( 'easy_profile_widget_name', '<h4 class="easy-profile-widget-name">'. $userdata->display_name .'</h4>', $instance );
 						}
 						do_action( 'after_easy_profile_widget_avatar', $instance );
 						do_action( 'before_easy_profile_widget_description', $instance );
